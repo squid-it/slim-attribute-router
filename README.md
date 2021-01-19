@@ -1,4 +1,4 @@
-# Slim (v4) Framework - Squid IT Attribute Router
+# Slim (v4) Framework - Attribute Router
 Attribute Action/Controller router
 
 This package allows you to add routes to your slim4 (https://www.slimframework.com) application using attributes in your action classes.
@@ -69,24 +69,12 @@ class StatusCodeAction
 
 
 ## Installation
-Place the contents of the src folder in you local copy of the source folder
+This package can be installed using Composer  
+Navigate into your project's root directory and execute the bash command shown below
 ```bash
-cp -r /extracted/src/. /app/src
+composer require squidit/slim-attribute-router
 ```
 
-Make sure that composer autoload can find our files by adding the following entry into the autoload section of the
-composer.json file (if not already present)
-
-```json
-{
-  "autoload": {
-    "psr-4": {
-      "SquidIT\\Slim\\Routing": "src/SquidIT/Slim/Routing"
-    }
-  }
-}
-
-```
 ## Enabling the Attribute Router
 Our attribute router extends slims default RouteCollector, so we can just instantiate our attribute router and pass
 it on to our AppFactory
