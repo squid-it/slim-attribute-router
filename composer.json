@@ -1,0 +1,37 @@
+{
+  "description": "Slim (v4) Framework - Attribute Router",
+  "name": "squidit/slim-attribute-router",
+  "keywords": ["annotation", "router", "slim", "slimframework", "v4", "attribute", "attribute router"],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Cecil Zorg",
+      "email": "developer@squidit.nl"
+    }
+  ],
+  "require": {
+    "php": "^8.0",
+    "slim/slim": "^4.7",
+    "slim/psr7": "^1.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9"
+  },
+  "autoload": {
+    "psr-4": {
+      "SquidIT\\Slim\\Routing\\": "src/SquidIT/Slim/Routing"
+    }
+  },
+  "autoload-dev" : {
+    "psr-4": {
+      "Tests\\Unit\\SquidIT\\Slim\\Routing\\": "tests/Unit/SquidIT/Slim/Routing"
+    }
+  },
+  "scripts": {
+    "test": "phpunit --coverage-text"
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

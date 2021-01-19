@@ -1,0 +1,9 @@
+### PHP STORM
+.idea/
+
+### Project
+.env
+/vendor/
+/coverage*
+/phpunit.xml
+/.phpunit.result.cache
