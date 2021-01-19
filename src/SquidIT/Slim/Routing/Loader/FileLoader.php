@@ -14,6 +14,9 @@ use SplFileObject;
 
 class FileLoader
 {
+    /**
+     * @var string[]
+     */
     protected array $paths;
 
     protected string $extension;
