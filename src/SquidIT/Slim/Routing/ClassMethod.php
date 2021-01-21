@@ -19,7 +19,7 @@ class ClassMethod
 
     protected string $methodName;
 
-	protected Route $route;
+    protected Route $route;
 
     /**
      * ClassMethod constructor.
@@ -28,43 +28,43 @@ class ClassMethod
      * @param string $methodName
      * @param Route $route
      */
-	public function __construct(string $className, string $methodName, Route $route)
-	{
-		$this->className = $className;
-		$this->methodName = $methodName;
-		$this->route = $route;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getMethodName(): string
-	{
-		$methodName = ($this->methodName === 'class') ? '__invoke' : $this->methodName;
-		return $this->className.':'.$methodName;
-	}
-
-	/**
-	 * @return string
-     */
-	public function getRoutePattern(): string
+    public function __construct(string $className, string $methodName, Route $route)
     {
-		return $this->route->getPattern();
-	}
+        $this->className = $className;
+        $this->methodName = $methodName;
+        $this->route = $route;
+    }
 
-	/**
-	 * @return array
-	 */
-	public function getRouteMethods(): array
-	{
-		return $this->route->getMethods();
-	}
+    /**
+     * @return string
+     */
+    public function getMethodName(): string
+    {
+        $methodName = ($this->methodName === 'class') ? '__invoke' : $this->methodName;
+        return $this->className.':'.$methodName;
+    }
 
-	/**
-	 * @return string|null
-	 */
-	public function getRouteName(): ?string
-	{
-		return $this->route->getName();
-	}
+    /**
+     * @return string
+     */
+    public function getRoutePattern(): string
+    {
+        return $this->route->getPattern();
+    }
+
+    /**
+     * @return array
+     */
+    public function getRouteMethods(): array
+    {
+        return $this->route->getMethods();
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getRouteName(): ?string
+    {
+        return $this->route->getName();
+    }
 }

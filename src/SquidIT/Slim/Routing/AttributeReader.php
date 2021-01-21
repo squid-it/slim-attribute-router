@@ -21,49 +21,49 @@ use SquidIT\Slim\Routing\Exception\AttributeReaderException;
  */
 class AttributeReader
 {
-	public const REGEX_NAMESPACE = '#namespace +([-_a-z0-9\\\]+)( +)?;#i';
-	public const REGEX_CLASS = '#(?<!abstract )class +([a-z_\x80-\xff][a-z0-9_\x80-\xff]*)#i';
+    public const REGEX_NAMESPACE = '#namespace +([-_a-z0-9\\\]+)( +)?;#i';
+    public const REGEX_CLASS = '#(?<!abstract )class +([a-z_\x80-\xff][a-z0-9_\x80-\xff]*)#i';
 
-	protected SplFileObject $phpFile;
+    protected SplFileObject $phpFile;
 
-	protected ?string $namespace = null;
+    protected ?string $namespace = null;
 
-	protected ?string $className = null;
+    protected ?string $className = null;
 
-	/**
-	 * @var array $allowedTypes array containing allowed search type
-	 */
-	protected array $allowedTypes = [
-		'namespace',
-		'className'
-	];
+    /**
+     * @var array $allowedTypes array containing allowed search type
+     */
+    protected array $allowedTypes = [
+        'namespace',
+        'className'
+    ];
 
-	public function __construct(SplFileObject $phpFile)
-	{
-		$this->phpFile = $phpFile;
-	}
+    public function __construct(SplFileObject $phpFile)
+    {
+        $this->phpFile = $phpFile;
+    }
 
-	/**
-	 * findClassMethodInfo
-	 *
-	 * get array of ClassMethod containing method name and cleaned docblock
+    /**
+     * findClassMethodInfo
+     *
+     * get array of ClassMethod containing method name and cleaned docblock
      *
      * @todo investigate if token_get_all($fileContent) would be faster then using regex
      *
-	 * @return ClassMethod[]
+     * @return ClassMethod[]
      *
-	 * @throws AttributeReaderException
-	 * @throws ReflectionException
-	 */
-	public function findClassMethodInfo(): array
-	{
-	    $result = [];
+     * @throws AttributeReaderException
+     * @throws ReflectionException
+     */
+    public function findClassMethodInfo(): array
+    {
+        $result = [];
 
-		/**
-		 * note: namespace will always proceed class, so as soon as we find a Classname, we can terminate loop
-		 */
-		// get class name (including namespace from file (stop at first hit))
-		while (!$this->phpFile->eof()) {
+        /**
+         * note: namespace will always proceed class, so as soon as we find a Classname, we can terminate loop
+         */
+        // get class name (including namespace from file (stop at first hit))
+        while (!$this->phpFile->eof()) {
             $line = $this->phpFile->fgets();
 
             // find namespace
@@ -91,23 +91,23 @@ class AttributeReader
             break;
         }
 
-		return $result;
-	}
+        return $result;
+    }
 
-	public function getFile(): SplFileObject
-	{
-		return $this->phpFile;
-	}
+    public function getFile(): SplFileObject
+    {
+        return $this->phpFile;
+    }
 
-	public function getFqClassName(): ?string
-	{
-		$className = null;
-		if (isset($this->className)) {
-			$className = $this->namespace.'\\'.$this->className;
-		}
+    public function getFqClassName(): ?string
+    {
+        $className = null;
+        if (isset($this->className)) {
+            $className = $this->namespace.'\\'.$this->className;
+        }
 
-		return $className;
-	}
+        return $className;
+    }
 
     /**
      * search

@@ -43,21 +43,21 @@ class AttributeRouteCollectorTest extends TestCase
         }
     }
 
-	public function testAddAttributeRoutes(): void
-	{
-		$attributeRouteCollector = new AttributeRouteCollector([
-			'path' => [self::TEST_DIR,]
-			],
-			AppFactory::determineResponseFactory(),
-			new CallableResolver(),
+    public function testAddAttributeRoutes(): void
+    {
+        $attributeRouteCollector = new AttributeRouteCollector([
+            'path' => [self::TEST_DIR,]
+            ],
+            AppFactory::determineResponseFactory(),
+            new CallableResolver(),
             cacheFile: __DIR__.'/cache.php'
-		);
+        );
 
-		self::assertInstanceOf(AttributeRouteCollector::class, $attributeRouteCollector);
-		$routes = $attributeRouteCollector->getRoutes();
-		$routesNotAdded = $attributeRouteCollector->getErrors();
+        self::assertInstanceOf(AttributeRouteCollector::class, $attributeRouteCollector);
+        $routes = $attributeRouteCollector->getRoutes();
+        $routesNotAdded = $attributeRouteCollector->getErrors();
 
-		self::assertCount(self::$nrOfRoutes, $routes);
-		self::assertCount(1, $routesNotAdded);
-	}
+        self::assertCount(self::$nrOfRoutes, $routes);
+        self::assertCount(1, $routesNotAdded);
+    }
 }
